@@ -11,8 +11,9 @@ class Animation {
 
     for (int i = 0; i < imageCount; i++) {
       // Use nf() to number format 'i' into two digits
-      String filename = imagePrefix + nf(i, 4) + "." + imageType;
+      String filename = imagePrefix + nf(i, 3) + "." + imageType;
       images[i] = loadImage(filename);
+      println(filename);
     }
   }
 

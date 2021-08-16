@@ -79,9 +79,9 @@ void draw() {
   
   
   for (int i = 0; i < faces.length; i++) {
-    
-    rect(faces[i].x-50, faces[i].y-50, faces[i].width+100, faces[i].height+100);
-    animation.display(faces[i].x-50, faces[i].y-50, faces[i].width+100, faces[i].height+100);
+    int offset = (int) (faces[i].width*0.5);
+    rect(faces[i].x-offset, faces[i].y-offset, faces[i].width+offset*2, faces[i].height+offset*2);
+    animation.display(faces[i].x-offset, faces[i].y-offset, faces[i].width+offset*2, faces[i].height+offset*2);
     //typewriteText(phrases[int(phrases.length-1)], faces[i].x*2, faces[i].y*2);
    //image(meme.get(r), faces[r].x*2, faces[r].y*2);
   }

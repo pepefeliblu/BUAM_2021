@@ -38,16 +38,20 @@ PFont font;
 float fontSize = 1.1;
 int counter = 0;
 
+Animation animation;
+
 void setup() {
   size(1280, 960);
-
+  frameRate(24);
   // This the default video input, see the GettingStartedCapture 
   // example if it creates an error
   String[] cameras = Capture.list();
+  delay(2000);
+  animation = new Animation("sprites/PT_Shifty_", "gif", 38);
   textSize(32);
   fill(0);
   text("LOADING", width/2, height/2);
-  delay(1000);
+  delay(2000);
   printArray(cameras);
   
   meme.add(loadImage("1.jpg"));
@@ -55,7 +59,6 @@ void setup() {
   
   try {
     video = new Capture(this, cameras[0]);
-    
     opencv = new OpenCV(this, video.width, video.height);
     opencv.loadCascade(OpenCV.CASCADE_FRONTALFACE);  
     // Start capturing the images from the camera
@@ -161,9 +164,9 @@ void draw() {
   
   for (int i = 0; i < faces.length; i++) {
     
-    int r = int(random(meme.size()))-1;
     rect(faces[i].x*2, faces[i].y*2, faces[i].width*2, faces[i].height*2);
-   // typewriteText(phrases[int(random(phrases.length))], faces[i].x*2, faces[i].y*2);
+    animation.display(faces[i].x*2, faces[i].y*2, faces[i].width*2, faces[i].height*2);
+    //typewriteText(phrases[int(phrases.length-1)], faces[i].x*2, faces[i].y*2);
    //image(meme.get(r), faces[r].x*2, faces[r].y*2);
   }
 }
